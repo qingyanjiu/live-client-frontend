@@ -5,14 +5,8 @@ import {environment} from "../../environments/environment";
 export class SettingsService {
 
   public queryUrls:any;
-  public typeMapping = {
-    "Web Order Id":"WEBORDERID",
-    "Sub Reference ID":"SUBREFERENCEID",
-    "Subscription Code":"WEBORDERID",
-  };
 
   constructor() {
-
 
     if (environment.production) {
       this.queryUrls = {
@@ -33,8 +27,6 @@ export class SettingsService {
           getLifecycles4CCWOrderLine: 'http://localhost:8080/webservice/getOrderLifeCycle/{objID}',
         }
       }
-
     }
   }
-
 }

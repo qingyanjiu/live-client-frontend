@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-left-bar',
@@ -9,11 +8,8 @@ import {Router} from "@angular/router";
 export class LeftBarComponent implements OnInit {
   @Input() isCollapsed: boolean;
 
-  constructor(private router: Router) {
-  }
 
-  toOrderFlow(event) {
-    this.router.navigate(['order-info'], {queryParams : event, skipLocationChange: true });
+  constructor() {
   }
 
   ngOnInit() {

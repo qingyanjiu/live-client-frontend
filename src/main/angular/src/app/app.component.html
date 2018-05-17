@@ -1,14 +1,11 @@
 <nz-layout class="layout">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed"
-            (nzCollapsedChange)="leftBarTrigger(isCollapsed)"
-            [nzTrigger]="null">
-    <app-left-bar [isCollapsed]="isCollapsed"></app-left-bar>
-  </nz-sider>
-  <nz-layout>
-    <app-title-bar></app-title-bar>
-    <!--<app-content></app-content>-->
+  <app-title-bar></app-title-bar>
+  <nz-content style="padding:0px;">
     <div class="main">
-      <router-outlet></router-outlet>
+      <!--<router-outlet></router-outlet>-->
     </div>
-  </nz-layout>
+  </nz-content>
+  <nz-footer style="position:fixed;bottom:0;width:100%">
+    Mokulive stream 2018
+  </nz-footer>
 </nz-layout>

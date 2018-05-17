@@ -1,8 +1,18 @@
-<nz-header>
+<nz-header style="position:fixed; width:100%">
+  <div class="logo">
+    <span class="logo_name">
+      Moku Live
+    </span>
+  </div>
   <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-    <app-search></app-search>
+    <li nz-menu-item>Watch Lives</li>
+    <li nz-menu-item>Sign Up</li>
+    <li nz-menu-item>Sign In</li>
+
     <app-avatar></app-avatar>
     <app-menu [type]="'mail'" [size]="26"></app-menu>
     <app-menu [type]="'question-circle-o'" [size]="24"></app-menu>
   </ul>
+  <!--<app-search></app-search>-->
+
 </nz-header>

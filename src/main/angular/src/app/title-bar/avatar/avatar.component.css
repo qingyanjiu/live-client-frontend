@@ -1,7 +1,8 @@
 .ant-avatar {
-  margin-top: 19px;
+  margin-top: -4px;
   font-size:12px;
   font-weight:bold;
+  cursor:pointer;
 }
 .ant-avatar-circle {
   width:26px !important;
