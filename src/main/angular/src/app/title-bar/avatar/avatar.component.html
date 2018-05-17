@@ -1,0 +1,24 @@
+<nz-dropdown style="float:right;height:60px" class="drop" [nzPlacement]="'bottomRight'">
+  <nz-avatar class="ant-dropdown-link"
+             [nzText]="'LL'"
+             [ngStyle]="{
+             'color':fontColor,
+             'background-color':bgColor
+             }">
+  </nz-avatar>
+  <i class="anticon anticon-caret-down drop-icon" nz-dropdown></i>
+  <ul nz-menu>
+    <li nz-menu-item (click)="log('View Profile')">
+      <i class="anticon anticon-user avatar-drop-icon"></i>
+      View Profile
+    </li>
+    <li nz-menu-item (click)="log('Account Settings')">
+      <i class="anticon anticon-setting avatar-drop-icon"></i>
+      Account Settings
+    </li>
+    <li nz-menu-item (click)="log('Log Out')">
+      <i class="anticon anticon-logout avatar-drop-icon"></i>
+      Log Out
+    </li>
+  </ul>
+</nz-dropdown>

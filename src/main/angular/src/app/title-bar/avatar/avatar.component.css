@@ -1,0 +1,26 @@
+.ant-avatar {
+  margin-top: 19px;
+  font-size:12px;
+  font-weight:bold;
+}
+.ant-avatar-circle {
+  width:26px !important;
+  height:26px !important;
+  border: solid 1px #FFF;
+}
+
+:host ::ng-deep .ant-avatar-string {
+  position: relative;
+  bottom: 4px;
+}
+
+.drop-icon {
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.avatar-drop-icon {
+  margin-right:4px;
+  font-weight:bold;
+  font-size:12px;
+}

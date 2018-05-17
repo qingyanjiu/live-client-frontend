@@ -1,0 +1,14 @@
+.ant-layout-header {
+  background: #347db0;
+  padding: 0
+}
+
+.ant-menu-dark {
+  border: none;
+  background: #347db0;
+  height:64px;
+}
+
+.ant-layout {
+  background: #FFF;
+}

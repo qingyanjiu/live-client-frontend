@@ -1,0 +1,14 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed"
+            (nzCollapsedChange)="leftBarTrigger(isCollapsed)"
+            [nzTrigger]="null">
+    <app-left-bar [isCollapsed]="isCollapsed"></app-left-bar>
+  </nz-sider>
+  <nz-layout>
+    <app-title-bar></app-title-bar>
+    <!--<app-content></app-content>-->
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-layout>
+</nz-layout>

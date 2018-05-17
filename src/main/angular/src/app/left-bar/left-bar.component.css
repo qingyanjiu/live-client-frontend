@@ -1,0 +1,39 @@
+.logo {
+  text-align:center;
+  /*height: 44px;*/
+  height: 64px;
+  background: #347db0;
+  /*border-radius: 6px;*/
+  /*padding: 10px 9px 10px 9px;*/
+  padding:6px;
+}
+
+.logoImg {
+  height: 52px;
+}
+
+.menu {
+  min-height:600px;
+}
+
+.anticon {
+  font-size:16px;
+  font-weight:bold;
+}
+
+.nav-text {
+  font-size:16px;
+}
+
+.menuItem {
+  padding: 6px 0 6px 0;
+  border: solid;
+  border-width: 0 0 1px 0;
+  border-color: #DDD;
+}
+
+.ant-anchor-link {
+  height:42px;
+  text-decoration: none;
+  padding:13px 0 13px 52px;
+}
