@@ -9,8 +9,8 @@ body {
 }
 
 :host ::ng-deep .main {
-  min-height:600px;
-  padding:4px;
+  /*min-height:600px;*/
+  padding:0px;
   background: #FFF;
 }
 
