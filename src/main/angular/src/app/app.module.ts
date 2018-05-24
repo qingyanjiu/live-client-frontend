@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {en_US, NgZorroAntdModule, NZ_I18N} from 'ng-zorro-antd';
 import {AppComponent} from './app.component';
 import {TitleBarComponent} from "./title-bar/title-bar.component";
@@ -16,6 +16,7 @@ import {EmitService} from "./service/emit.service";
 import {SettingsService} from "./service/settings.service";
 import {HighchartsChartComponent} from './shared/highcharts/highcharts-chart.component';
 import { IndexComponent } from './index/index.component';
+import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,15 @@ import { IndexComponent } from './index/index.component';
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
     NgbModule.forRoot(),
-    AppRoutingModule
+    DelonAuthModule.forRoot(),
+    AppRoutingModule,
   ],
-  providers   : [ { provide: NZ_I18N, useValue: en_US },OrderFlowService, EmitService, SettingsService ],
+  providers   : [
+    { provide: NZ_I18N, useValue: en_US },
+    OrderFlowService, EmitService,
+    SettingsService,
+    { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
