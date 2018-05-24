@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    let bgNo = Math.ceil(Math.random()*100) % 4;
+    let bgNo = Math.ceil(Math.random()*100) % 3;
     this.background = `url("/assets/img/back${bgNo}.jpg")`;
     this.resizeContent();
     Observable.fromEvent(window, 'resize')
