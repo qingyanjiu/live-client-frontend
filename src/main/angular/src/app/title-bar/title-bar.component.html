@@ -6,8 +6,12 @@
   </div>
   <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
     <li nz-menu-item>Watch Lives</li>
-    <li nz-menu-item>Sign Up</li>
-    <li nz-menu-item>Sign In</li>
+    <!--<li nz-menu-item>Sign Up</li>-->
+    <li nz-menu-item>
+      <a routerLink="/sign-in" [skipLocationChange]="true">
+        Sign In
+      </a>
+    </li>
 
     <app-avatar></app-avatar>
     <app-menu [type]="'mail'" [size]="26"></app-menu>

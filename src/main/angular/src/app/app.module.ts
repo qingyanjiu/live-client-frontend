@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {en_US, NgZorroAntdModule, NZ_I18N} from 'ng-zorro-antd';
 import {AppComponent} from './app.component';
@@ -17,6 +17,7 @@ import {SettingsService} from "./service/settings.service";
 import {HighchartsChartComponent} from './shared/highcharts/highcharts-chart.component';
 import { IndexComponent } from './index/index.component';
 import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
+import { SignComponent } from './sign/sign.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,13 @@ import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
     SearchComponent,
     AvatarComponent,
     MenuComponent,
-    IndexComponent
+    IndexComponent,
+    SignComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
