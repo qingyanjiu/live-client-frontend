@@ -15,7 +15,8 @@ import {
 })
 export class SignComponent implements OnInit {
 
-  validateForm: FormGroup;
+  signInValidateForm: FormGroup;
+  signUpValidateForm: FormGroup;
   height: number;
 
   constructor(private el: ElementRef, private renderer: Renderer2,private fb: FormBuilder) {
@@ -33,10 +34,17 @@ export class SignComponent implements OnInit {
     // this.renderer.setStyle(hostElem.querySelector('.signup-form-div'), 'height', (height/2 - 60) + 'px');
   }
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[ i ].markAsDirty();
-      this.validateForm.controls[ i ].updateValueAndValidity();
+  signInSubmitForm(): void {
+    for (const i in this.signInValidateForm.controls) {
+      this.signInValidateForm.controls[ i ].markAsDirty();
+      this.signInValidateForm.controls[ i ].updateValueAndValidity();
+    }
+  }
+
+  signUpSubmitForm(): void {
+    for (const i in this.signUpValidateForm.controls) {
+      this.signUpValidateForm.controls[ i ].markAsDirty();
+      this.signUpValidateForm.controls[ i ].updateValueAndValidity();
     }
   }
 
@@ -49,9 +57,14 @@ export class SignComponent implements OnInit {
       });
 
 
-    this.validateForm = this.fb.group({
-      userName: [ null, [ Validators.required ] ],
-      password: [ null, [ Validators.required ] ],
+    this.signInValidateForm = this.fb.group({
+      signInUserName: [ null, [ Validators.required ] ],
+      signInPassword: [ null, [ Validators.required ] ],
+      remember: [ true ]
+    });
+    this.signUpValidateForm = this.fb.group({
+      signUpUserName: [ null, [ Validators.required ] ],
+      signUpPassword: [ null, [ Validators.required ] ],
       remember: [ true ]
     });
   }

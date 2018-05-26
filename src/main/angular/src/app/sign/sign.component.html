@@ -4,24 +4,24 @@
        [ngStyle]="{'height':height+'px'}"
        class="signup-div">
     <div nz-row>
-      <div nz-col nzSpan="4"></div>
-      <div nz-col nzSpan="16" class="sign-form-div">
+      <div nz-col nzSpan="6"></div>
+      <div nz-col nzSpan="12" class="sign-form-div">
         <div class="sign-title">Sign in</div>
-        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <form nz-form [formGroup]="signInValidateForm" class="login-form" (ngSubmit)="signInSubmitForm()">
           <nz-form-item>
             <nz-form-control>
               <nz-input-group nzPrefixIcon="anticon anticon-user">
-                <input type="text" nz-input formControlName="userName" placeholder="Username" [nzSize]="'large'">
+                <input type="text" nz-input formControlName="signInUserName" placeholder="Username" [nzSize]="'large'">
               </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
+              <nz-form-explain *ngIf="signInValidateForm.get('signInUserName').dirty && signInValidateForm.get('signInUserName').errors">Please input your username!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
             <nz-form-control>
               <nz-input-group nzPrefixIcon="anticon anticon-lock">
-                <input type="password" nz-input formControlName="password" placeholder="Password" [nzSize]="'large'">
+                <input type="password" nz-input formControlName="signInPassword" placeholder="Password" [nzSize]="'large'">
               </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your Password!</nz-form-explain>
+              <nz-form-explain *ngIf="signInValidateForm.get('signInPassword').dirty && signInValidateForm.get('signInPassword').errors">Please input your Password!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
@@ -34,7 +34,7 @@
           </nz-form-item>
         </form>
       </div>
-      <div nz-col nzSpan="4"></div>
+      <div nz-col nzSpan="6"></div>
     </div>
   </div>
 
@@ -45,24 +45,24 @@
        [ngStyle]="{'height':height+'px'}"
        class="signin-div">
     <div nz-row>
-      <div nz-col nzSpan="4"></div>
-      <div nz-col nzSpan="16" class="sign-form-div">
+      <div nz-col nzSpan="6"></div>
+      <div nz-col nzSpan="12" class="sign-form-div">
         <div class="sign-title">Sign up</div>
-        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <form nz-form [formGroup]="signUpValidateForm" class="login-form" (ngSubmit)="signUpSubmitForm()">
           <nz-form-item>
             <nz-form-control>
               <nz-input-group nzPrefixIcon="anticon anticon-user">
-                <input type="text" nz-input formControlName="userName" placeholder="Username" [nzSize]="'large'">
+                <input type="text" nz-input formControlName="signUpUserName" placeholder="Username" [nzSize]="'large'">
               </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
+              <nz-form-explain *ngIf="signUpValidateForm.get('signUpUserName').dirty && signUpValidateForm.get('signUpUserName').errors">Please input your username!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
             <nz-form-control>
               <nz-input-group nzPrefixIcon="anticon anticon-lock">
-                <input type="password" nz-input formControlName="password" placeholder="Password" [nzSize]="'large'">
+                <input type="password" nz-input formControlName="signUpPassword" placeholder="Password" [nzSize]="'large'">
               </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your Password!</nz-form-explain>
+              <nz-form-explain *ngIf="signUpValidateForm.get('signUpPassword').dirty && signUpValidateForm.get('signUpPassword').errors">Please input your Password!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
@@ -75,7 +75,7 @@
           </nz-form-item>
         </form>
       </div>
-      <div nz-col nzSpan="4"></div>
+      <div nz-col nzSpan="6"></div>
     </div>
   </div>
 </div>
