@@ -5,27 +5,20 @@ import {environment} from "../../environments/environment";
 export class SettingsService {
 
   public queryUrls:any;
+  private devUrl = 'http://localhost:8000';
+  private prodUrl = 'http://x.x.x.x:xxxx';
 
   constructor() {
 
     if (environment.production) {
       this.queryUrls = {
-        orderFlow: {
-          getMockUpData: '/assets/static/mockup.json',
-          getOrderInfo: 'http://localhost:8080/webservice/selectOrderInfo/{objType}/{objID}',
-          getLogs: 'http://localhost:8080/webservice/selectLogs/CCWORDERLINEID/{objID}',
-          getLifecycles4CCWOrderLine: 'http://localhost:8080/webservice/getOrderLifeCycle/{objID}',
-        }
+        login:`${this.prodUrl}/login`,
       }
     }
     else {
       this.queryUrls = {
-        orderFlow: {
-          getMockUpData: '/assets/static/mockup.json',
-          getOrderInfo: 'http://localhost:8080/webservice/selectOrderInfo/{objType}/{objID}',
-          getLogs: 'http://localhost:8080/webservice/selectLogs/CCWORDERLINEID/{objID}',
-          getLifecycles4CCWOrderLine: 'http://localhost:8080/webservice/getOrderLifeCycle/{objID}',
-        }
+        login:`${this.devUrl}/login`,
+        users:`${this.devUrl}/user/`,
       }
     }
   }

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, Renderer2} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {
   AbstractControl,
@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
+import {UserService} from "../service/user.service";
 
 
 @Component({
@@ -19,7 +21,8 @@ export class SignComponent implements OnInit {
   signUpValidateForm: FormGroup;
   height: number;
 
-  constructor(private el: ElementRef, private renderer: Renderer2,private fb: FormBuilder) {
+  constructor(private el: ElementRef, private renderer: Renderer2,private fb: FormBuilder,
+              @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService, private userService:UserService) {
   }
 
   resizeContent() {
@@ -38,6 +41,14 @@ export class SignComponent implements OnInit {
     for (const i in this.signInValidateForm.controls) {
       this.signInValidateForm.controls[ i ].markAsDirty();
       this.signInValidateForm.controls[ i ].updateValueAndValidity();
+    }
+    let userName = this.signInValidateForm.controls.signInUserName.value;
+    let password = this.signInValidateForm.controls.signInPassword.value;
+    if(userName && password && userName !== '' && password !== '') {
+      this.userService.login({username: userName, password: password})
+        .subscribe(result => {
+          console.log(result);
+        });
     }
   }
 
@@ -60,12 +71,10 @@ export class SignComponent implements OnInit {
     this.signInValidateForm = this.fb.group({
       signInUserName: [ null, [ Validators.required ] ],
       signInPassword: [ null, [ Validators.required ] ],
-      remember: [ true ]
     });
     this.signUpValidateForm = this.fb.group({
       signUpUserName: [ null, [ Validators.required ] ],
       signUpPassword: [ null, [ Validators.required ] ],
-      remember: [ true ]
     });
   }
 
