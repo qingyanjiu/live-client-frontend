@@ -6,7 +6,7 @@ import {SignComponent} from "../sign/sign.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
-  {path: 'sign-in', component: SignComponent},
+  {path: 'login', component: SignComponent},
   // {path: 'api-performance', component: ApiPerformanceComponent},
 ];
 
