@@ -46,8 +46,8 @@ export class SignComponent implements OnInit {
     let password = this.signInValidateForm.controls.signInPassword.value;
     if(userName && password && userName !== '' && password !== '') {
       this.userService.login({username: userName, password: password})
-        .subscribe(result => {
-          console.log(result);
+        .subscribe((result:Response) => {
+          console.log(result.headers.get('Authorization'));
         });
     }
   }
