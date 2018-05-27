@@ -1,6 +1,20 @@
-<nz-dropdown style="float:right;height:60px" class="drop" [nzPlacement]="'bottomRight'">
+<div *ngIf="shortName === ''" style="float:right;height:60px">
   <nz-avatar class="ant-dropdown-link"
-             [nzText]="'LL'"
+             [nzIcon]="icon"
+             [nzText]="shortName"
+             [ngStyle]="{
+               'color':fontColor,
+               'background-color':bgColor,
+               'margin-right':'30px'
+               }"
+             nz-dropdown>
+  </nz-avatar>
+</div>
+
+<nz-dropdown *ngIf="shortName !== ''" style="float:right;height:60px" class="drop" [nzPlacement]="'bottomRight'">
+  <nz-avatar class="ant-dropdown-link"
+             [nzIcon]="icon"
+             [nzText]="shortName"
              [ngStyle]="{
              'color':fontColor,
              'background-color':bgColor,

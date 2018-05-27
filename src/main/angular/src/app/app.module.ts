@@ -18,6 +18,7 @@ import { IndexComponent } from './index/index.component';
 import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
 import { SignComponent } from './sign/sign.component';
 import {UserService} from "./service/user.service";
+import { LiveListComponent } from './live-list/live-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {UserService} from "./service/user.service";
     AvatarComponent,
     MenuComponent,
     IndexComponent,
-    SignComponent
+    SignComponent,
+    LiveListComponent
   ],
   imports: [
     BrowserModule,

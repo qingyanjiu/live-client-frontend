@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
 import {UserService} from "../service/user.service";
+import {Router} from "@angular/router";
+import {EmitService} from "../service/emit.service";
 
 
 @Component({
@@ -22,7 +24,10 @@ export class SignComponent implements OnInit {
   height: number;
 
   constructor(private el: ElementRef, private renderer: Renderer2,private fb: FormBuilder,
-              @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService, private userService:UserService) {
+              @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+              private userService:UserService,
+              private router: Router,
+              private emitService:EmitService) {
   }
 
   resizeContent() {
@@ -47,7 +52,12 @@ export class SignComponent implements OnInit {
     if(userName && password && userName !== '' && password !== '') {
       this.userService.login({username: userName, password: password})
         .subscribe((result:Response) => {
-          console.log(result.headers.get('Authorization'));
+          let token = result.headers.get('Authorization');
+          if(token) {
+            this.tokenService.set({token: token});
+            this.emitService.eventEmit.emit(`loginSuccess|${userName}`);
+            this.router.navigate(['live-list'], {queryParams : {}, skipLocationChange: true });
+          }
         });
     }
   }

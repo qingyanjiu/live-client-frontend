@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
+import {EmitService} from "../../service/emit.service";
 
 const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 
@@ -13,10 +15,27 @@ export class AvatarComponent implements OnInit {
   bgColor:string = '';
   fontColor:string = '';
 
-  constructor() { }
+  shortName:string = '';
+  icon = 'anticon anticon-user';
+
+  constructor(@Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+              private emitService:EmitService) { }
 
   ngOnInit() {
-    this.bgColor = this.getRandomColor();
+    //observe loginSuccess event
+    this.emitService.eventEmit.subscribe((value: any) => {
+      if(value.indexOf('loginSuccess') !== -1) {
+        let userName = value.split('|')[1];
+        if(userName && userName.length>2)
+          this.shortName = userName.substring(0,2).toUpperCase();
+        else
+          this.shortName = userName;
+        this.icon = '';
+        this.bgColor = this.getRandomColor();
+      }
+    });
+
+    this.bgColor = '#888';
     this.fontColor = '#FFF';
   }
 

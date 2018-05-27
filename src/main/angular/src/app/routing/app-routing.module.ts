@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {IndexComponent} from "../index/index.component";
 import {SignComponent} from "../sign/sign.component";
+import {LiveListComponent} from "../live-list/live-list.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'login', component: SignComponent},
-  // {path: 'api-performance', component: ApiPerformanceComponent},
+  {path: 'live-list', component: LiveListComponent},
 ];
 
 @NgModule({
