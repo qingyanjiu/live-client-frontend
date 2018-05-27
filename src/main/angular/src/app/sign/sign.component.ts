@@ -54,8 +54,8 @@ export class SignComponent implements OnInit {
         .subscribe((result:Response) => {
           let token = result.headers.get('Authorization');
           if(token) {
-            this.tokenService.set({token: token});
-            this.emitService.eventEmit.emit(`loginSuccess|${userName}`);
+            this.tokenService.set({token: token,username:userName});
+            this.emitService.eventEmit.emit(`loginSuccess`);
             this.router.navigate(['live-list'], {queryParams : {}, skipLocationChange: true });
           }
         });

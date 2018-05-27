@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, ElementRef, Renderer2} from '@angular/core';
+import {Component, AfterViewInit, ElementRef, Renderer2, OnInit} from '@angular/core';
 import {EmitService} from "./service/emit.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {EmitService} from "./service/emit.service";
   templateUrl:'./app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements OnInit{
 
   el: ElementRef;
   _hostElem;
@@ -16,7 +16,7 @@ export class AppComponent implements AfterViewInit{
     this._hostElem = this.el.nativeElement;
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
 
   }
 

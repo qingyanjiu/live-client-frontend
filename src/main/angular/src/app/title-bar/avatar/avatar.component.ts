@@ -24,19 +24,20 @@ export class AvatarComponent implements OnInit {
   ngOnInit() {
     //observe loginSuccess event
     this.emitService.eventEmit.subscribe((value: any) => {
-      if(value.indexOf('loginSuccess') !== -1) {
-        let userName = value.split('|')[1];
-        if(userName && userName.length>2)
-          this.shortName = userName.substring(0,2).toUpperCase();
-        else
-          this.shortName = userName;
-        this.icon = '';
-        this.bgColor = this.getRandomColor();
+      if(value === 'loginSuccess') {
+        let userName = this.tokenService.get().username;
+        this.updateAvatar(userName);
       }
     });
 
-    this.bgColor = '#888';
-    this.fontColor = '#FFF';
+    //if username and token in localstorage, update avatar
+    let userName = this.tokenService.get().username;
+    if(userName){
+      this.updateAvatar(userName);
+    } else {
+      this.bgColor = '#888';
+      this.fontColor = '#FFF';
+    }
   }
 
   getRandomColor(){
@@ -48,6 +49,15 @@ export class AvatarComponent implements OnInit {
 
   log(text){
     console.log(text);
+  }
+
+  updateAvatar(userName){
+    if(userName && userName.length>2)
+      this.shortName = userName.substring(0,2).toUpperCase();
+    else
+      this.shortName = userName;
+    this.icon = '';
+    this.bgColor = this.getRandomColor();
   }
 
 }
