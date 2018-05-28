@@ -5,8 +5,8 @@ import {environment} from "../../environments/environment";
 export class SettingsService {
 
   public queryUrls:any;
-  private devUrl = 'http://64.137.224.204:8000';
-  private prodUrl = 'http://x.x.x.x:xxxx';
+  private devUrl = 'http://localhost:8000';
+  private prodUrl = 'http://64.137.224.204:8000';
 
   constructor() {
 
@@ -18,6 +18,7 @@ export class SettingsService {
     else {
       this.queryUrls = {
         login:`${this.devUrl}/login`,
+        register:`${this.devUrl}/user/add`,
         users:`${this.devUrl}/user/`,
       }
     }

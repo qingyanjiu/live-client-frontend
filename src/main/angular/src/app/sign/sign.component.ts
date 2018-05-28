@@ -67,6 +67,14 @@ export class SignComponent implements OnInit {
       this.signUpValidateForm.controls[ i ].markAsDirty();
       this.signUpValidateForm.controls[ i ].updateValueAndValidity();
     }
+    let userName = this.signUpValidateForm.controls.signUpUserName.value;
+    let password = this.signUpValidateForm.controls.signUpPassword.value;
+    if(userName && password && userName !== '' && password !== '') {
+      this.userService.register({username: userName, password: password})
+        .subscribe((result:Response) => {
+          console.log(result);
+        });
+    }
   }
 
   ngOnInit() {

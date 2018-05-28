@@ -24,7 +24,7 @@ import {LiveListComponent} from './live-list/live-list.component';
 export function delonAuthConfig(): DelonAuthConfig {
   return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
     login_url: '/passport/login',
-    ignores: [/\/login/, /assets\//, /passport\//]
+    ignores: [/\/login/, /assets\//, /\/user\/add/]
   });
 }
 
