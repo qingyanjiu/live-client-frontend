@@ -14,11 +14,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EmitService} from "./service/emit.service";
 import {SettingsService} from "./service/settings.service";
 import {HighchartsChartComponent} from './shared/highcharts/highcharts-chart.component';
-import { IndexComponent } from './index/index.component';
-import { DelonAuthModule, SimpleInterceptor } from '@delon/auth';
-import { SignComponent } from './sign/sign.component';
+import {IndexComponent} from './index/index.component';
+import {DelonAuthConfig, DelonAuthModule, SimpleInterceptor} from '@delon/auth';
+import {SignComponent} from './sign/sign.component';
 import {UserService} from "./service/user.service";
-import { LiveListComponent } from './live-list/live-list.component';
+import {LiveListComponent} from './live-list/live-list.component';
+
+//config the auth filter
+export function delonAuthConfig(): DelonAuthConfig {
+  return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
+    login_url: '/passport/login',
+    ignores: [/\/login/, /assets\//, /passport\//]
+  });
+}
 
 @NgModule({
   declarations: [
@@ -43,13 +51,18 @@ import { LiveListComponent } from './live-list/live-list.component';
     DelonAuthModule.forRoot(),
     AppRoutingModule,
   ],
-  providers   : [
-    { provide: NZ_I18N, useValue: en_US },
+  providers: [
+    {provide: NZ_I18N, useValue: en_US},
     UserService, EmitService,
     SettingsService,
-    { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
+    {provide: DelonAuthConfig, useFactory: delonAuthConfig}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
+
+
+
