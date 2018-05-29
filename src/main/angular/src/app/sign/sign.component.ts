@@ -1,15 +1,11 @@
 import {Component, ElementRef, Inject, OnInit, Renderer2} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {
-  AbstractControl,
-  FormBuilder, FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
 import {UserService} from "../service/user.service";
 import {Router} from "@angular/router";
 import {EmitService} from "../service/emit.service";
+import {NzNotificationService} from "ng-zorro-antd";
 
 
 @Component({
@@ -27,7 +23,8 @@ export class SignComponent implements OnInit {
               @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
               private userService:UserService,
               private router: Router,
-              private emitService:EmitService) {
+              private emitService:EmitService,
+              private notification: NzNotificationService) {
   }
 
   resizeContent() {
@@ -71,8 +68,21 @@ export class SignComponent implements OnInit {
     let password = this.signUpValidateForm.controls.signUpPassword.value;
     if(userName && password && userName !== '' && password !== '') {
       this.userService.register({username: userName, password: password})
-        .subscribe((result:Response) => {
-          console.log(result);
+        .subscribe((result) => {
+          if(result) {
+            if (result.result === 'exist')
+              this.notification.create('warning', 'Warning',
+                'The user name already exists, please try another one');
+            else if (result.result === 'error')
+              this.notification.create('error', 'Error',
+                'An error occurred, please try again later');
+            else if (result.result === 'success')
+              this.notification.create('success', 'Congratulations',
+                'Your account has created successfully, please login on the left side');
+          } else {
+            this.notification.create('error', 'Error',
+              'An error occurred, please contact the system administrator');
+          }
         });
     }
   }
