@@ -1,3 +1,19 @@
-<p>
-  live-list works!
-</p>
+<div style="padding:3rem">
+  <div nz-row [nzGutter]="8">
+
+    <div class="live-row" *ngFor="let live of lives" nz-col
+         [nzXs]="{ span: 24}"
+         [nzMd]="{ span: 8}"
+         [nzLg]="{ span: 6}"
+         [nzXl]="{ span: 4}"
+    >
+      <nz-card nzHoverable [nzCover]="coverTemplate">
+        <nz-card-meta nzTitle="直播名称" nzDescription="主播：xxx"></nz-card-meta>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <img alt="example" [attr.src]="live.url"/>
+      </ng-template>
+    </div>
+
+  </div>
+</div>
