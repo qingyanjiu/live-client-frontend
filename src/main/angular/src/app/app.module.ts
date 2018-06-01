@@ -20,6 +20,8 @@ import {SignComponent} from './sign/sign.component';
 import {UserService} from "./service/user.service";
 import {LiveListComponent} from './live-list/live-list.component';
 import {LiveService} from "./service/live.service";
+import { LiveRoomComponent } from './live-room/live-room.component';
+import { UserRoomComponent } from './user-room/user-room.component';
 
 //config the auth filter
 export function delonAuthConfig(): DelonAuthConfig {
@@ -40,7 +42,9 @@ export function delonAuthConfig(): DelonAuthConfig {
     MenuComponent,
     IndexComponent,
     SignComponent,
-    LiveListComponent
+    LiveListComponent,
+    LiveRoomComponent,
+    UserRoomComponent
   ],
   imports: [
     BrowserModule,
