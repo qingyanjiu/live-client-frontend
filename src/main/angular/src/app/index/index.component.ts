@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
 
   resizeContent(){
     const hostElem = this.el.nativeElement;
-    let height = window.innerHeight - 64 - 34;
+    let height = window.innerHeight > 600 ? window.innerHeight - 64 - 34 : 600;
     this.renderer.setStyle(hostElem.querySelector('.index'),'height',height + 'px');
   }
 

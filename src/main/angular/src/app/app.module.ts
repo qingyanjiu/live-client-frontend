@@ -19,12 +19,14 @@ import {DelonAuthConfig, DelonAuthModule, SimpleInterceptor} from '@delon/auth';
 import {SignComponent} from './sign/sign.component';
 import {UserService} from "./service/user.service";
 import {LiveListComponent} from './live-list/live-list.component';
+import {LiveService} from "./service/live.service";
 
 //config the auth filter
 export function delonAuthConfig(): DelonAuthConfig {
   return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
-    login_url: '/passport/login',
-    ignores: [/\/login/, /assets\//, /\/user\/add/]
+    login_url: '/login',
+    ignores: [/\/login/, /assets\//, /\/user\/add/],
+    token_send_key: 'Authorization'
   });
 }
 
@@ -53,7 +55,9 @@ export function delonAuthConfig(): DelonAuthConfig {
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US},
-    UserService, EmitService,
+    UserService,
+    LiveService,
+    EmitService,
     SettingsService,
     {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
     {provide: DelonAuthConfig, useFactory: delonAuthConfig}

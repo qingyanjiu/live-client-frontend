@@ -28,12 +28,4 @@ export class UserService {
       {username:params.username,password:params.password},
       {headers:this.headers});
   }
-
-  getUsers(params:any):Observable<any>{
-    let url = this.settingsService.queryUrls.users;
-    return this.http.post(
-      url,
-      {},
-      {headers:this.headers});
-  }
 }

@@ -29,7 +29,7 @@ export class SignComponent implements OnInit {
 
   resizeContent() {
     const hostElem = this.el.nativeElement;
-    let height = window.innerHeight - 64 - 34;
+    let height = window.innerHeight > 600 ? window.innerHeight - 64 - 34 : 600;
     this.renderer.setStyle(hostElem.querySelector('.signup-div'), 'height', height + 'px');
     this.renderer.setStyle(hostElem.querySelector('.signin-div'), 'height', height + 'px');
     hostElem.querySelectorAll('.sign-form-div').forEach(item=>{

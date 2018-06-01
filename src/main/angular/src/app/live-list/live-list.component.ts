@@ -1,5 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
+import {LiveService} from "../service/live.service";
+import {SettingsService} from "../service/settings.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-live-list',
@@ -8,17 +11,26 @@ import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
 })
 export class LiveListComponent implements OnInit {
 
+  snapshoturl;
+
   lives:any[];
 
-  constructor(@Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) { }
+  constructor(@Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+              private liveService:LiveService,
+              private settingsService:SettingsService,
+              private router: Router,) { }
 
   ngOnInit() {
-    this.lives = [
-      {url:'http://mokulive.stream/record/147e4f5c336245db8a8d653376d96b31.png'},
-      {url:'http://mokulive.stream/record/061461c074cc4831bb81873b48a5a9b5.png'},
-      {url:'http://mokulive.stream/record/b20a9ab616fe4985b7ef46fa7401b0e2.png'},
-      {url:'http://mokulive.stream/record/2688e987ba8147bbb0e50e21db7d0fc4.png'},
-    ]
+    this.snapshoturl = this.settingsService.snapshoturl;
+
+    this.liveService.getAllLives()
+      .subscribe(result=>{
+          this.lives = result;
+        },
+        error => {
+          this.router.navigate(['login'], {queryParams : event, skipLocationChange: true });
+        }
+      );
   }
 
 }
