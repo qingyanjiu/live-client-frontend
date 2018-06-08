@@ -29,12 +29,13 @@ export class LiveListComponent implements OnInit {
   updateColWidth() {
     let hostElem = this.el.nativeElement;
     let liveDiv = hostElem.querySelector('.liveContent');
-    this.colWidth = (liveDiv.offsetWidth - this.colMargin * 2) / 4;
+    this.colWidth = (liveDiv.offsetWidth - this.colMargin * 2 - 10) / 4;
   }
 
   ngOnInit() {
 
     this.updateColWidth();
+
     Observable.fromEvent(window, 'resize')
       .debounceTime(100)
       .subscribe((event) => {
