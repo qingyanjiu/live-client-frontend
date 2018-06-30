@@ -8,7 +8,7 @@
       </nz-card>
       <ng-template #coverTemplate>
         <img [attr.alt]="live.liveName" [attr.src]="snapshoturl+live.streamCode+'.png'"
-             onerror="javascript:this.src='/assets/img/empty-cover.png';"
+             onerror="javascript:this.src='assets/img/empty-cover.png';"
         />
         <div *ngIf="live.status === '9'"
              style="position:absolute;top:0;right:0;height:2rem;width:2rem;background-color: #ff923f">
