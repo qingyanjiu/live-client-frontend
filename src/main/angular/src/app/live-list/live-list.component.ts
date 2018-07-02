@@ -44,14 +44,14 @@ export class LiveListComponent implements OnInit {
 
     this.snapshoturl = this.settingsService.snapshoturl;
 
-    this.liveService.getAllLives()
-      .subscribe(result=>{
-          this.lives = result;
-        },
-        error => {
-          this.router.navigate(['login'], {queryParams : event, skipLocationChange: true });
-        }
-      );
+    // this.liveService.getAllLives()
+    //   .subscribe(result=>{
+    //       this.lives = result;
+    //     },
+    //     error => {
+    //       this.router.navigate(['login'], {queryParams : event, skipLocationChange: true });
+    //     }
+    //   );
   }
 
 }

@@ -22,6 +22,8 @@ import {LiveListComponent} from './live-list/live-list.component';
 import {LiveService} from "./service/live.service";
 import { LiveRoomComponent } from './live-room/live-room.component';
 import { UserRoomComponent } from './user-room/user-room.component';
+import {Auth0Service} from "./service/auth0.service";
+import { CallbackComponent } from './callback/callback.component';
 
 //config the auth filter
 export function delonAuthConfig(): DelonAuthConfig {
@@ -44,7 +46,8 @@ export function delonAuthConfig(): DelonAuthConfig {
     SignComponent,
     LiveListComponent,
     LiveRoomComponent,
-    UserRoomComponent
+    UserRoomComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ export function delonAuthConfig(): DelonAuthConfig {
     EmitService,
     SettingsService,
     {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
-    {provide: DelonAuthConfig, useFactory: delonAuthConfig}
+    {provide: DelonAuthConfig, useFactory: delonAuthConfig},
+    Auth0Service
   ],
   bootstrap: [AppComponent]
 })

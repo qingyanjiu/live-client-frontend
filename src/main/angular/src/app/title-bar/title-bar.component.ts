@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Auth0Service} from "../service/auth0.service";
 
 @Component({
   selector: 'app-title-bar',
@@ -7,7 +8,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class TitleBarComponent implements OnInit {
 
-  constructor() { }
+  @Input() profile;
+
+  constructor(private authService:Auth0Service) { }
 
   ngOnInit() {
   }

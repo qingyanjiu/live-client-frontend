@@ -12,13 +12,13 @@
       </a>
     </li>
     <!--<li nz-menu-item>Sign Up</li>-->
-    <li nz-menu-item>
+    <li nz-menu-item *ngIf="!authService.isAuthenticated()">
       <a routerLink="/login" [skipLocationChange]="true">
         Sign In
       </a>
     </li>
 
-    <app-avatar></app-avatar>
+    <app-avatar [profile]="profile"></app-avatar>
     <app-menu [type]="'mail'" [size]="26"></app-menu>
     <app-menu [type]="'question-circle-o'" [size]="24"></app-menu>
   </ul>

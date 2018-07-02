@@ -1,6 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnChanges, OnInit} from '@angular/core';
 import {DA_SERVICE_TOKEN, ITokenService} from "@delon/auth";
 import {EmitService} from "../../service/emit.service";
+import {Auth0Service} from "../../service/auth0.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 
@@ -10,7 +12,7 @@ const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
   styleUrls: ['./avatar.component.css']
 })
 
-export class AvatarComponent implements OnInit {
+export class AvatarComponent implements OnInit,OnChanges {
 
   bgColor:string = '';
   fontColor:string = '';
@@ -18,26 +20,35 @@ export class AvatarComponent implements OnInit {
   shortName:string = '';
   icon = 'anticon anticon-user';
 
+  @Input() profile;
+
   constructor(@Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-              private emitService:EmitService) { }
+              private emitService:EmitService,
+              private authService:Auth0Service) { }
 
   ngOnInit() {
-    //observe loginSuccess event
-    this.emitService.eventEmit.subscribe((value: any) => {
-      if(value === 'loginSuccess') {
-        let userName = this.tokenService.get().username;
-        this.updateAvatar(userName);
-      }
-    });
 
-    //if username and token in localstorage, update avatar
-    let userName = this.tokenService.get().username;
-    if(userName){
-      this.updateAvatar(userName);
-    } else {
-      this.bgColor = '#888';
-      this.fontColor = '#FFF';
-    }
+    // //observe loginSuccess event
+    // this.emitService.eventEmit.subscribe((value: any) => {
+    //   if(this.authService.isAuthenticated()) {
+    //     let userName = this.tokenService.get().username;
+    //     this.updateAvatar(userName);
+    //   }
+    // });
+    //
+    // //if username and token in localstorage, update avatar
+    // let userName = this.tokenService.get().username;
+    // if(userName){
+    //   this.updateAvatar(userName);
+    // } else {
+    //   this.bgColor = '#888';
+    //   this.fontColor = '#FFF';
+    // }
+  }
+
+  ngOnChanges(){
+    if(this.profile && this.profile.nickname)
+      this.updateAvatar(this.profile.nickname);
   }
 
   getRandomColor(){
@@ -58,6 +69,10 @@ export class AvatarComponent implements OnInit {
       this.shortName = userName;
     this.icon = '';
     this.bgColor = this.getRandomColor();
+  }
+
+  logOut(){
+    this.authService.logout();
   }
 
 }
