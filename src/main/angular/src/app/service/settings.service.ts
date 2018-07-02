@@ -11,21 +11,23 @@ export class SettingsService {
 
   public queryUrls:any;
   private devUrl = 'http://64.137.224.204:8000';
-  private prodUrl = 'http://64.137.224.204:8000';
+  private prodUrl = 'http://localhost:5000';
 
   constructor() {
 
 
     if (environment.production) {
       this.queryUrls = {
-        login:`${this.prodUrl}/login`,
+        // login:`${this.prodUrl}/login`,
+        callback: `${this.prodUrl}/callback`,
       }
     }
     else {
       this.queryUrls = {
-        login:`${this.devUrl}/login`,
-        register:`${this.devUrl}/user/add`,
-        getAllLives:`${this.devUrl}/live/`,
+        // login:`${this.devUrl}/login`,
+        // register:`${this.devUrl}/user/add`,
+        // getAllLives:`${this.devUrl}/live/`,
+        callback: `${this.prodUrl}/callback`,
       }
     }
   }

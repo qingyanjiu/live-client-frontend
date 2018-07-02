@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import * as auth0 from 'auth0-js';
 import {EmitService} from "./emit.service";
+import {SettingsService} from "./settings.service";
 
 (window as any).global = window;
 
@@ -13,13 +14,13 @@ export class Auth0Service {
     domain: 'mokulive.auth0.com',
     responseType: 'token id_token',
     audience: 'https://mokulive.auth0.com/userinfo',
-    redirectUri: 'http://localhost:5000/callback',
+    redirectUri: this.settingService.queryUrls.callback,
     scope: 'openid profile'
   });
 
   userProfile;
 
-  constructor(public router: Router,private emitService:EmitService) {}
+  constructor(public router: Router,private emitService:EmitService,private settingService:SettingsService) {}
 
   public login(): void {
     this.auth0.authorize();
