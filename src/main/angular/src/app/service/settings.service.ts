@@ -10,8 +10,8 @@ export class SettingsService {
   public hlsLiveUrl = 'http://mokulive.stream/hls/';
 
   public queryUrls:any;
-  private devUrl = 'http://64.137.224.204:8000';
-  private prodUrl = 'http://localhost:5000';
+  private devUrl = 'http://localhost:5000';
+  private prodUrl = 'http://64.137.224.204:5000';
 
   constructor() {
 
@@ -20,6 +20,7 @@ export class SettingsService {
       this.queryUrls = {
         // login:`${this.prodUrl}/login`,
         callback: `${this.prodUrl}/callback`,
+        getRoomInfo: `${this.prodUrl}/live/getRoom?userName=qingyanjiu@126.com`,
       }
     }
     else {
@@ -27,7 +28,8 @@ export class SettingsService {
         // login:`${this.devUrl}/login`,
         // register:`${this.devUrl}/user/add`,
         // getAllLives:`${this.devUrl}/live/`,
-        callback: `${this.prodUrl}/callback`,
+        callback: `${this.devUrl}/callback`,
+        getRoomInfo: `${this.prodUrl}/live/getRoom?userName=qingyanjiu@126.com`,
       }
     }
   }

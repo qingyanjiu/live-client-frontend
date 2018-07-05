@@ -21,4 +21,9 @@ export class LiveService {
       {headers:this.headers});
   }
 
+  getRoomInfo():Observable<any>{
+    let url = this.settingsService.queryUrls.getRoomInfo;
+    return this.http.get(url);
+  }
+
 }
