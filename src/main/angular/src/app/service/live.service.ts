@@ -10,7 +10,7 @@ export class LiveService {
 
   constructor(private http: HttpClient,private settingsService:SettingsService) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json;charset=UTF-8')
-      .set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+      .set('Authorization', `Bearer ${localStorage.getItem('access_token')}`);
   }
 
   getAllLives():Observable<any>{
