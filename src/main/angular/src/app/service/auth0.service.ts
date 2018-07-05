@@ -10,10 +10,10 @@ import {SettingsService} from "./settings.service";
 export class Auth0Service {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'zE1Y3VK6GeTyCWOwi74ERWQSuSPRdLEo',
+    clientID: 'zilO60n6x2nTd1QE361ZAlKKmoQ460mh',
     domain: 'mokulive.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://mokulive.auth0.com/userinfo',
+    audience: 'http://client-backend.mokulive.stream',
     redirectUri: this.settingService.queryUrls.callback,
     scope: 'openid profile'
   });
