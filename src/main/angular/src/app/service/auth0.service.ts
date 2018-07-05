@@ -10,7 +10,7 @@ import {SettingsService} from "./settings.service";
 export class Auth0Service {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'ajG5hyN3tw829MwHAB3EThAV1pWnxGci',
+    clientID: 'zE1Y3VK6GeTyCWOwi74ERWQSuSPRdLEo',
     domain: 'mokulive.auth0.com',
     responseType: 'token id_token',
     audience: 'https://mokulive.auth0.com/userinfo',
