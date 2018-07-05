@@ -26,13 +26,13 @@ import {Auth0Service} from "./service/auth0.service";
 import { CallbackComponent } from './callback/callback.component';
 
 //config the auth filter
-export function delonAuthConfig(): DelonAuthConfig {
-  return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
-    login_url: '/login',
-    ignores: [/\/login/, /assets\//, /\/user\/add/],
-    token_send_key: 'Authorization'
-  });
-}
+// export function delonAuthConfig(): DelonAuthConfig {
+//   return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
+//     login_url: '/login',
+//     ignores: [/\/login/, /assets\//, /\/user\/add/],
+//     token_send_key: 'Authorization'
+//   });
+// }
 
 @NgModule({
   declarations: [
@@ -66,8 +66,8 @@ export function delonAuthConfig(): DelonAuthConfig {
     LiveService,
     EmitService,
     SettingsService,
-    {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
-    {provide: DelonAuthConfig, useFactory: delonAuthConfig},
+    // {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
+    // {provide: DelonAuthConfig, useFactory: delonAuthConfig},
     Auth0Service
   ],
   bootstrap: [AppComponent]

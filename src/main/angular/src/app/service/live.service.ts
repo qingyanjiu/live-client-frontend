@@ -8,9 +8,9 @@ export class LiveService {
 
   private headers;
 
-
   constructor(private http: HttpClient,private settingsService:SettingsService) {
-    this.headers = new HttpHeaders().set('Content-Type', 'application/json;charset=UTF-8');
+    this.headers = new HttpHeaders().set('Content-Type', 'application/json;charset=UTF-8')
+      .set('Authorization', `Bearer ${localStorage.getItem('access_token')}`);
   }
 
   getAllLives():Observable<any>{
@@ -23,7 +23,7 @@ export class LiveService {
 
   getRoomInfo():Observable<any>{
     let url = this.settingsService.queryUrls.getRoomInfo;
-    return this.http.get(url);
+    return this.http.get(url,{headers:this.headers});
   }
 
 }
