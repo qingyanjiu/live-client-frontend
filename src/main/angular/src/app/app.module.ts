@@ -24,6 +24,7 @@ import { LiveRoomComponent } from './live-room/live-room.component';
 import { UserRoomComponent } from './user-room/user-room.component';
 import {Auth0Service} from "./service/auth0.service";
 import { CallbackComponent } from './callback/callback.component';
+import {AuthGuard} from "./service/auth.guard";
 
 //config the auth filter
 // export function delonAuthConfig(): DelonAuthConfig {
@@ -68,7 +69,8 @@ import { CallbackComponent } from './callback/callback.component';
     SettingsService,
     // {provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
     // {provide: DelonAuthConfig, useFactory: delonAuthConfig},
-    Auth0Service
+    Auth0Service,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

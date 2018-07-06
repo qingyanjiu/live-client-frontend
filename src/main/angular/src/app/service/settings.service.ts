@@ -10,7 +10,7 @@ export class SettingsService {
   public hlsLiveUrl = 'http://mokulive.stream/hls/';
 
   public queryUrls:any;
-  private devUrl = 'http://localhost:3000';
+  private devUrl = 'http://64.137.224.204:3000';
   private prodUrl = 'http://64.137.224.204:3000';
 
   constructor() {
