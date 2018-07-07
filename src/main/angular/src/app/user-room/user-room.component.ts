@@ -39,26 +39,32 @@ export class UserRoomComponent implements OnInit {
   }
 
   createRoom() {
-    this.loading = true;
-    let params = {};
-    params['roomName'] = this.roomName;
-    params['roomPass'] = this.roomPass;
-    params['userName'] = this.profile.name;
-    this.liveService.createRoom(params)
-      .subscribe(data => {
-        if (data.result && data.result !== 'error') {
-          this.roomInfo = data.result;
-          this.roomExists = true;
-          this.loading = false;
-          this.poster = 'assets/img/player-back.jpg';
-          this.startPlay();
-        }
-      });
+    if(!this.roomName){
+      this.notification.create('warning', 'Warning',
+        `Please input your room name`);
+    }
+    else {
+      this.loading = true;
+      let params = {};
+      params['roomName'] = this.roomName;
+      params['roomPass'] = this.roomPass;
+      params['userName'] = this.profile.name;
+      this.liveService.createRoom(params)
+        .subscribe(data => {
+          if (data.result && data.result !== 'error') {
+            this.roomInfo = data.result;
+            this.roomExists = true;
+            this.loading = false;
+            this.poster = 'assets/img/player-back.jpg';
+            this.startPlay();
+          }
+        });
+    }
   }
 
   copySuccess(type) {
     this.notification.create('success', 'Copied',
-      `${type} Copied successfully`);
+      `${type} copied successfully`);
   }
 
 

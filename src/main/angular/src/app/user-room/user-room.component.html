@@ -42,11 +42,16 @@
 
     <div class="stream-info" *ngIf="roomExists">
       <div>
-      <span>
-        <nz-tag [nzColor]="'#f50'" ngxClipboard [cbContent]="roomInfo.pushHost" (cbOnSuccess)="copySuccess('Push URL')">
-          {{roomInfo.pushHost}}
-        </nz-tag>
-      </span>
+        <span>
+          <nz-tag [nzColor]="'#f50'">
+            {{roomInfo.roomName}}
+          </nz-tag>
+        </span>
+        <span>
+          <nz-tag [nzColor]="'#87d068'" ngxClipboard [cbContent]="roomInfo.pushHost" (cbOnSuccess)="copySuccess('Push URL')">
+            {{roomInfo.pushHost}}
+          </nz-tag>
+        </span>
         <span>
         <nz-tag [nzColor]="'#2db7f5'" ngxClipboard [cbContent]="roomInfo.streamCode"
                 (cbOnSuccess)="copySuccess('Stream code')">

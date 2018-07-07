@@ -3,7 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {en_US, NgZorroAntdModule, NZ_I18N} from 'ng-zorro-antd';
+import {en_US, NgZorroAntdModule, NZ_I18N, NZ_NOTIFICATION_CONFIG} from 'ng-zorro-antd';
 import {AppComponent} from './app.component';
 import {TitleBarComponent} from "./title-bar/title-bar.component";
 import {SearchComponent} from './title-bar/search/search.component';
@@ -65,6 +65,14 @@ import {ClipboardModule} from "ngx-clipboard";
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US},
+    { provide: NZ_NOTIFICATION_CONFIG, useValue: {
+        nzTop         : '66px',
+        nzBottom      : '24px',
+        nzPlacement   : 'topRight',
+        nzDuration    : 3000,
+        nzMaxStack    : 7,
+        nzPauseOnHover: true,
+        nzAnimate     : true}},
     UserService,
     LiveService,
     EmitService,
