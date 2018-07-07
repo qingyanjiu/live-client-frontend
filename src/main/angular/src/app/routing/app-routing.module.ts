@@ -6,12 +6,14 @@ import {SignComponent} from "../sign/sign.component";
 import {LiveListComponent} from "../live-list/live-list.component";
 import {CallbackComponent} from "../callback/callback.component";
 import {AuthGuard} from "../service/auth.guard";
+import {UserRoomComponent} from "../user-room/user-room.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'callback', component: CallbackComponent},
   {path: 'login', component: SignComponent},
   {path: 'live-list', component: LiveListComponent,canActivate: [AuthGuard]},
+  {path: 'user-room', component: UserRoomComponent,canActivate: [AuthGuard]},
 ];
 
 @NgModule({

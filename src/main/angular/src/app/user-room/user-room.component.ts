@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRoomComponent implements OnInit {
 
+  roomName:string;
+  roomPass:string;
+  withPass = false;
+
   constructor() { }
 
   ngOnInit() {
