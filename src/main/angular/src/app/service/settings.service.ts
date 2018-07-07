@@ -20,7 +20,8 @@ export class SettingsService {
       this.queryUrls = {
         // login:`${this.prodUrl}/login`,
         callback: `http://localhost:5000/callback`,
-        getRoomInfo: `${this.prodUrl}/live/getRoom?userName=qingyanjiu@126.com`,
+        createRoom: `${this.prodUrl}/live/openRoom`,
+        getRoomInfo: `${this.prodUrl}/live/getRoom?userName={userName}`,
       }
     }
     else {
@@ -29,7 +30,8 @@ export class SettingsService {
         // register:`${this.devUrl}/user/add`,
         // getAllLives:`${this.devUrl}/live/`,
         callback: `http://localhost:5000/callback`,
-        getRoomInfo: `${this.devUrl}/live/getRoom?userName=qingyanjiu@126.com`,
+        createRoom: `${this.devUrl}/live/openRoom`,
+        getRoomInfo: `${this.devUrl}/live/getRoom?userName={userName}`,
       }
     }
   }

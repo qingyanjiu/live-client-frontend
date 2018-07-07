@@ -10,7 +10,7 @@ export class TitleBarComponent implements OnInit {
 
   @Input() profile;
 
-  constructor(private authService:Auth0Service) { }
+  constructor(public authService:Auth0Service) { }
 
   ngOnInit() {
   }

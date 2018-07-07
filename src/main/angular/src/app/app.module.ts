@@ -25,6 +25,7 @@ import { UserRoomComponent } from './user-room/user-room.component';
 import {Auth0Service} from "./service/auth0.service";
 import { CallbackComponent } from './callback/callback.component';
 import {AuthGuard} from "./service/auth.guard";
+import {ClipboardModule} from "ngx-clipboard";
 
 //config the auth filter
 // export function delonAuthConfig(): DelonAuthConfig {
@@ -60,6 +61,7 @@ import {AuthGuard} from "./service/auth.guard";
     NgbModule.forRoot(),
     DelonAuthModule.forRoot(),
     AppRoutingModule,
+    ClipboardModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US},

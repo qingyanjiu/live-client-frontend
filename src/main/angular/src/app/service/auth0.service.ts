@@ -52,6 +52,7 @@ export class Auth0Service {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('profile');
     // Go back to the home route
     this.router.navigate(['/']);
   }
@@ -74,6 +75,7 @@ export class Auth0Service {
       this.auth0.client.userInfo(accessToken, (err, profile) => {
         if (profile) {
           self.userProfile = profile;
+          localStorage.setItem('profile', JSON.stringify(profile));
         }
         cb(err, profile);
       });

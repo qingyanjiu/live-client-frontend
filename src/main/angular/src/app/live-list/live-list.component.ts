@@ -44,19 +44,6 @@ export class LiveListComponent implements OnInit {
 
     this.snapshoturl = this.settingsService.snapshoturl;
 
-    this.liveService.getRoomInfo()
-      .subscribe(result => {
-        console.log(result);
-      });
-
-    // this.liveService.getAllLives()
-    //   .subscribe(result=>{
-    //       this.lives = result;
-    //     },
-    //     error => {
-    //       this.router.navigate(['login'], {queryParams : event, skipLocationChange: true });
-    //     }
-    //   );
   }
 
 }

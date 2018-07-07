@@ -32,6 +32,7 @@
     "highcharts-angular": "^1.0.2",
     "moment": "^2.19.1",
     "ng-zorro-antd": "^0.7.0",
+    "ngx-clipboard": "^11.1.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
