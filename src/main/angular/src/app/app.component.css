@@ -23,3 +23,11 @@ app-title-bar {
   font-size:10px;
   padding:10px !important;
 }
+
+.layout {
+  min-height:600px;
+  min-width:1000px;
+  overflow: auto;
+  padding-bottom:35px;
+  background-color: #FFF !important;
+}

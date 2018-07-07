@@ -33,7 +33,6 @@ export class UserRoomComponent implements OnInit {
 
   startPlay(){
     if (this.liveService.flvjs.isSupported()) {
-      console.log(`${this.settingsService.httpflvLiveUrl}${this.roomInfo.streamCode}`);
       var live = this.el.nativeElement.querySelector('#videoElement');
       this.liveService.flv_load(live, `${this.settingsService.httpflvLiveUrl}${this.roomInfo.streamCode}`);
     }
