@@ -1,8 +1,12 @@
-FROM node:8
-USER root
-ADD . /root/web
-RUN npm -g config set user root
-WORKDIR /root/web/src/main/angular
-RUN npm install
-EXPOSE 4200
-CMD ng serve -H 0.0.0.0
+# builder
+FROM maven:3.5.2-jdk-8
+COPY . /client
+WORKDIR /client
+RUN mvn package -Dmaven.test.skip=true
+
+# publisher
+FROM java:alpine
+WORKDIR /web
+COPY --from=0 /client/target/*.jar .
+EXPOSE 8000
+CMD java -jar *.jar
