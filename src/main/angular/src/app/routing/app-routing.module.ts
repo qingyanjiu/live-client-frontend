@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'callback', component: CallbackComponent},
   {path: 'login', component: SignComponent},
-  {path: 'live-list', component: LiveListComponent,canActivate: [AuthGuard]},
+  {path: 'live-list', component: LiveListComponent},
   {path: 'user-room', component: UserRoomComponent,canActivate: [AuthGuard]},
 ];
 

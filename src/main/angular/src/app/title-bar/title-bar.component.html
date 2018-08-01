@@ -11,6 +11,11 @@
         Watch Lives
       </a>
     </li>
+    <li nz-menu-item>
+      <a routerLink="/user-room" *ngIf="authService.isAuthenticated()" [skipLocationChange]="true">
+        My Room
+      </a>
+    </li>
     <!--<li nz-menu-item>Sign Up</li>-->
     <li nz-menu-item *ngIf="!authService.isAuthenticated()">
       <a routerLink="/login" [skipLocationChange]="true">
