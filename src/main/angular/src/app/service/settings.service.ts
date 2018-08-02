@@ -10,8 +10,8 @@ export class SettingsService {
   public hlsLiveUrl = 'http://mokulive.stream/hls/';
 
   public queryUrls:any;
-  private devUrl = 'http://test.mokulive.stream';
-  private prodUrl = 'http://test.mokulive.stream';
+  private prodUrl = 'http://client-backend.mokulive.stream';
+  private devUrl = 'http://client-backend.mokulive.stream';
 
   constructor() {
 
