@@ -10,28 +10,29 @@ export class SettingsService {
   public hlsLiveUrl = 'http://mokulive.stream/hls/';
 
   public queryUrls:any;
-  private prodUrl = 'http://client-backend.mokulive.stream';
-  private devUrl = 'http://client-backend.mokulive.stream';
+  private prodClientBackendUrl = 'http://client-backend.mokulive.stream';
+  private devClientBackendUrl = 'http://client-backend.mokulive.stream';
+
+  private prodClientFrontendUrl = 'http://go.mokulive.stream';
+  private devClientFrontendUrl = 'http://localhost:5000';
 
   constructor() {
 
 
     if (environment.production) {
       this.queryUrls = {
-        // login:`${this.prodUrl}/login`,
-        callback: `http://localhost:5000/callback`,
-        createRoom: `${this.prodUrl}/live/openRoom`,
-        getRoomInfo: `${this.prodUrl}/live/getRoom?userName={userName}`,
+        callback: `${this.prodClientFrontendUrl}/callback`,
+
+        createRoom: `${this.prodClientBackendUrl}/live/openRoom`,
+        getRoomInfo: `${this.prodClientBackendUrl}/live/getRoom?userName={userName}`,
       }
     }
     else {
       this.queryUrls = {
-        // login:`${this.devUrl}/login`,
-        // register:`${this.devUrl}/user/add`,
-        // getAllLives:`${this.devUrl}/live/`,
-        callback: `http://localhost:5000/callback`,
-        createRoom: `${this.devUrl}/live/openRoom`,
-        getRoomInfo: `${this.devUrl}/live/getRoom?userName={userName}`,
+        callback: `${this.devClientFrontendUrl}/callback`,
+
+        createRoom: `${this.devClientBackendUrl}/live/openRoom`,
+        getRoomInfo: `${this.devClientBackendUrl}/live/getRoom?userName={userName}`,
       }
     }
   }
